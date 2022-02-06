@@ -24,5 +24,4 @@ public class PersonServiceImpl implements PersonService {
         statement.setString(5, person.getRole());
         statement.executeUpdate();
     }
-
 }

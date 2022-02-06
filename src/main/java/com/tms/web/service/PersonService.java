@@ -9,6 +9,5 @@ import java.sql.SQLException;
 public interface PersonService {
 
     void savePerson(Person person) throws SQLException;
-//    void authorizationPerson(String login, String password, String role) throws SQLException, ServletException, IOException;
 
 }

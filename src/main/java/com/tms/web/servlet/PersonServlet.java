@@ -27,6 +27,7 @@ public class PersonServlet extends HttpServlet {
         req.getRequestDispatcher("/WEB-INF/pages/AuthorizationPage.html").forward(req, resp);
     }
 
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");

@@ -10,6 +10,7 @@ public class JDBCConfiguration {
         return JDBCConfiguration.setConnect();
     }
 
+
     public static Connection setConnect(){
 
         String url = "jdbc:postgresql://localhost:5432/postgres";

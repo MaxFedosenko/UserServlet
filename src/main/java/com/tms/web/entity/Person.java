@@ -9,7 +9,6 @@ public class Person {
     private String role;
 
     public Person() {
-
     }
 
     public Person(String login, String password, String sex, String description, String role) {
