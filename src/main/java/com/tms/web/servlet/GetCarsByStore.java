@@ -21,19 +21,14 @@ public class GetCarsByStore extends HttpServlet {
         Session session = HibernateConfiguration.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Car car = new Car();
-        if (store.equals("true")){
-            car.setIsInStore(true);
-        } else {
-            car.setIsInStore(false);
-        }
-
-        List<Car> isinstore;
+        car.setIsInStore(store.equals("true") ? true : false);
+        List<Car> isInStore;
         if (car.getIsInStore()) {
-            isinstore = session.createQuery("from Car where isinstore is true", Car.class).list();
+            isInStore = session.createQuery("from Car where isinstore is true", Car.class).list();
         } else {
-            isinstore = session.createQuery("from Car where isinstore is false", Car.class).list();
+            isInStore = session.createQuery("from Car where isinstore is false", Car.class).list();
         }
-        System.out.println(isinstore);
+        System.out.println(isInStore);
         transaction.commit();
         session.close();
     }

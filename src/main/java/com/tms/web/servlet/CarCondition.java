@@ -24,11 +24,7 @@ public class CarCondition extends HttpServlet {
         Car car = session.createQuery("from Car where id = :id", Car.class)
                 .setParameter("id", id).getSingleResult();
         Boolean isInStore = car.getIsInStore();
-        if (isInStore == true) {
-            car.setIsInStore(false);
-        } else {
-            car.setIsInStore(true);
-        }
+        car.setIsInStore(isInStore == true ? false : true);
         session.saveOrUpdate(car);
         System.out.println(car);
         transaction.commit();

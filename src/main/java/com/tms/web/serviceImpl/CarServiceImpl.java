@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 import java.util.Date;
 import java.util.List;
 
+import static com.tms.web.entity.BRAND.forSetBrand;
 import static com.tms.web.entity.HibernateConfiguration.*;
 
 public class CarServiceImpl implements CarService {
@@ -18,19 +19,8 @@ public class CarServiceImpl implements CarService {
     public void save(Car car) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        if (String.valueOf(car.getNumber()).contains("1")) {
-            car.setBrand(BRAND.AUDI);
-        } else if (String.valueOf(car.getNumber()).contains("2")) {
-            car.setBrand(BRAND.MERCEDES);
-        } else {
-            car.setBrand(BRAND.BMW);
-        }
-
-        if ((car.getBrand()).equals(BRAND.MERCEDES)) {
-            car.setIsInStore(true);
-        } else {
-            car.setIsInStore(false);
-        }
+        forSetBrand(car);
+        car.setIsInStore((car.getBrand()) == (BRAND.MERCEDES) ? true : false);
         car.setRelease(new Date());
         session.save(car);
         transaction.commit();
