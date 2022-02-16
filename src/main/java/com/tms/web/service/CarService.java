@@ -1,5 +1,6 @@
 package com.tms.web.service;
 
+import com.tms.web.entity.BRAND;
 import com.tms.web.entity.Car;
 
 import java.util.List;
@@ -10,6 +11,14 @@ public interface CarService {
 
     List<Car> getAll();
 
-    void delete(Car car);
+    void getByID(Long id);
+
+    void delete(Integer number);
+
+    void carCondition(Long id);
+
+    void getCarsByBrand(BRAND brand);
+
+    void getCarsByStore(String store);
 
 }
