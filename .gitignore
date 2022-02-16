@@ -1,6 +1,5 @@
 # Project exclude paths
 /target/
 .idea
-pom.xml
 web.xml
 index.jsp
