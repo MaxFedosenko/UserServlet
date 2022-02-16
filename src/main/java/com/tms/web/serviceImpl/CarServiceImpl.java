@@ -2,7 +2,7 @@ package com.tms.web.serviceImpl;
 
 import com.tms.web.entity.BRAND;
 import com.tms.web.entity.Car;
-import com.tms.web.entity.HibernateConfiguration;
+import com.tms.web.config.HibernateConfiguration;
 import com.tms.web.service.CarService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import static com.tms.web.entity.BRAND.forSetBrand;
-import static com.tms.web.entity.HibernateConfiguration.*;
+import static com.tms.web.config.HibernateConfiguration.*;
 
 public class CarServiceImpl implements CarService {
     @Override
