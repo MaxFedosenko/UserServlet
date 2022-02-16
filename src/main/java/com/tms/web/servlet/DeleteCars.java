@@ -1,6 +1,5 @@
 package com.tms.web.servlet;
 
-import com.tms.web.entity.Car;
 import com.tms.web.serviceImpl.CarServiceImpl;
 
 import javax.servlet.ServletException;
@@ -16,9 +15,7 @@ public class DeleteCars extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer number = Integer.valueOf(req.getParameter("number"));
-        Car car = new Car();
-        car.setNumber(number);
         CarServiceImpl carService = new CarServiceImpl();
-        carService.delete(car);
+        carService.delete(number);
     }
 }
