@@ -1,5 +1,8 @@
-package com.tms.web.entity;
+package com.tms.web.config;
 
+import com.github.fluent.hibernate.cfg.scanner.EntityScanner;
+import com.tms.web.entity.Car;
+import com.tms.web.entity.Parent;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -21,7 +24,10 @@ public class HibernateConfiguration {
         configuration.setProperty("hibernate.show_sql", "true");
         configuration.setProperty("hibernate.hbm2ddl.auto", "create");
         configuration.setProperty("hibernate.format_sql", "true");
-        configuration.addAnnotatedClass(Car.class);
-         sessionFactory = configuration.buildSessionFactory();
+//        configuration.addAnnotatedClass(Car.class);
+//        configuration.addAnnotatedClass(Parent.class);
+        EntityScanner.scanPackages("com.tms.web.entity").addTo(configuration);
+
+        sessionFactory = configuration.buildSessionFactory();
     }
 }
