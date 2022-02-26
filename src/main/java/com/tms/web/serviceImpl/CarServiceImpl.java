@@ -1,25 +1,31 @@
 package com.tms.web.serviceImpl;
 
-import com.tms.web.entity.BRAND;
-import com.tms.web.entity.Car;
+import com.tms.web.entities.BRAND;
+import com.tms.web.entities.Car;
 import com.tms.web.config.HibernateConfiguration;
+import com.tms.web.entities.Client;
 import com.tms.web.service.CarService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import static com.tms.web.entity.BRAND.forSetBrand;
+import static com.tms.web.entities.BRAND.forSetBrand;
 import static com.tms.web.config.HibernateConfiguration.*;
 
+
 public class CarServiceImpl implements CarService {
+
+
     @Override
     public void save(Car car) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         forSetBrand(car);
+//        forSetRegion(car);
         car.setIsInStore((car.getBrand()) == (BRAND.MERCEDES) ? true : false);
         car.setRelease(new Date());
         session.save(car);
@@ -39,14 +45,14 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void getByID(Long id) {
+    public Car getByID(Long id) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Car car = session.createQuery("from Car where id = :id", Car.class)
                 .setParameter("id", id).getSingleResult();
-        System.out.println(car);
         transaction.commit();
         session.close();
+        return car;
     }
 
     @Override
@@ -87,7 +93,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void getCarsByStore(String store) {
-        Session session = HibernateConfiguration.sessionFactory.openSession();
+        Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Car car = new Car();
         car.setIsInStore(store.equals("true") ? true : false);
