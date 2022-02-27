@@ -1,6 +1,6 @@
 package com.tms.web.servlet;
 
-import com.tms.web.entity.Person;
+import com.tms.web.entities.Person;
 import com.tms.web.serviceImpl.PersonServiceImpl;
 
 import javax.servlet.ServletException;

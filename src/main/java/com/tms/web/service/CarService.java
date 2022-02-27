@@ -1,7 +1,8 @@
 package com.tms.web.service;
 
-import com.tms.web.entity.BRAND;
-import com.tms.web.entity.Car;
+import com.tms.web.entities.BRAND;
+import com.tms.web.entities.Car;
+
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public interface CarService {
 
     List<Car> getAll();
 
-    void getByID(Long id);
+    Car getByID(Long id);
 
     void delete(Integer number);
 

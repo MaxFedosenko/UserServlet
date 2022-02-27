@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,7 @@ public class Region {
     private Long id;
     private String name;
     @ManyToMany(mappedBy = "regions", fetch = FetchType.EAGER)
-    private List<Car> cars;
+    private List<Car> cars = new ArrayList<>();
 
     @Override
     public String toString() {
