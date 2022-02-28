@@ -3,13 +3,11 @@ package com.tms.web.serviceImpl;
 import com.tms.web.entities.BRAND;
 import com.tms.web.entities.Car;
 import com.tms.web.config.HibernateConfiguration;
-import com.tms.web.entities.Client;
 import com.tms.web.service.CarService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -45,7 +43,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car getByID(Long id) {
+    public Car get(Long id) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Car car = session.createQuery("from Car where id = :id", Car.class)

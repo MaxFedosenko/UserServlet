@@ -22,12 +22,7 @@ public class Car {
     private Integer number;
     @Enumerated(EnumType.STRING)
     private BRAND brand;
-    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "cars_regions",
-//            joinColumns = {@JoinColumn(name = "car_id")},
-//            inverseJoinColumns = {@JoinColumn(name = "region_id")}
-//    )
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Region> regions;
     @ManyToOne(cascade = CascadeType.ALL)
     private Client client;
@@ -41,6 +36,21 @@ public class Car {
     private Date lastUpdateTime;
     @Version
     private Long version;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        return number != null ? number.equals(car.number) : car.number == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return number != null ? number.hashCode() : 0;
+    }
 
     @Override
     public String toString() {

@@ -1,9 +1,6 @@
 package com.tms.web.servlet;
 
-import com.tms.web.entities.Car;
-import com.tms.web.service.CarService;
 import com.tms.web.service.ClientService;
-import com.tms.web.serviceImpl.CarServiceImpl;
 import com.tms.web.serviceImpl.ClientServiceImpl;
 
 import javax.servlet.ServletException;
@@ -21,8 +18,6 @@ public class AddCars extends HttpServlet {
         Long idCar = Long.valueOf(req.getParameter("idCar"));
         Long idClient = Long.valueOf(req.getParameter("idClient"));
         ClientService clientService = new ClientServiceImpl();
-        CarService carService = new CarServiceImpl();
-        Car car = carService.getByID(idCar);
-        clientService.addCar(car, idClient);
+        clientService.addCar(idCar, idClient);
     }
 }
