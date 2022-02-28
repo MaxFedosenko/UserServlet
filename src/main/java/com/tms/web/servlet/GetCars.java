@@ -1,6 +1,6 @@
 package com.tms.web.servlet;
 
-import com.tms.web.entity.Car;
+import com.tms.web.entities.Car;
 import com.tms.web.serviceImpl.CarServiceImpl;
 
 import javax.servlet.ServletException;

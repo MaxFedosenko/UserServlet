@@ -1,10 +1,12 @@
 package com.tms.web.config;
 
-import com.github.fluent.hibernate.cfg.scanner.EntityScanner;
-import com.tms.web.entity.Car;
-import com.tms.web.entity.Parent;
+import com.tms.web.entities.*;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+
+import java.util.Arrays;
 
 public class HibernateConfiguration {
 
@@ -24,10 +26,34 @@ public class HibernateConfiguration {
         configuration.setProperty("hibernate.show_sql", "true");
         configuration.setProperty("hibernate.hbm2ddl.auto", "create");
         configuration.setProperty("hibernate.format_sql", "true");
-//        configuration.addAnnotatedClass(Car.class);
+        configuration.addAnnotatedClass(Car.class);
+        configuration.addAnnotatedClass(Client.class);
+        configuration.addAnnotatedClass(Region.class);
 //        configuration.addAnnotatedClass(Parent.class);
-        EntityScanner.scanPackages("com.tms.web.entity").addTo(configuration);
+//        configuration.addAnnotatedClass(Home.class);
 
         sessionFactory = configuration.buildSessionFactory();
     }
+
+//    public static void testParent(){
+//
+//        Session session = sessionFactory.openSession();
+//        Transaction transaction = session.beginTransaction();
+//
+//
+//        Home home1 = new Home(null, 12L, 3L, null);
+//        Home home2 = new Home(null, 1L, 30L, null);
+//        Parent parent1 = new Parent(null, "parent1", Arrays.asList(home1, home2));
+//
+//        home1.setParent(parent1);
+//        home2.setParent(parent1);
+//
+//        session.save(parent1);
+//        session.save(home1);
+//        session.save(home2);
+//        transaction.commit();
+//        session.close();
+//
+//    }
+
 }

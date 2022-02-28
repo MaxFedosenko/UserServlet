@@ -1,4 +1,4 @@
-package com.tms.web.entity;
+package com.tms.web.entities;
 
 public class Person {
 
