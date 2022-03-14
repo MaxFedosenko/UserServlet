@@ -12,7 +12,7 @@ public interface CarService {
 
     List<Car> getAll();
 
-    Car getByID(Long id);
+    Car get(Long id);
 
     void delete(Integer number);
 

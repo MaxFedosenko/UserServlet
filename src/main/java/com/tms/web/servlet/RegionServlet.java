@@ -17,6 +17,6 @@ public class RegionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         RegionService regionService = new RegionServiceImpl();
-        regionService.addRegion(name);
+        regionService.saveOrAdd(name);
     }
 }

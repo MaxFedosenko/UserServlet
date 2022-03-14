@@ -6,14 +6,12 @@ import com.tms.web.service.ClientService;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.List;
-
 import static com.tms.web.config.HibernateConfiguration.sessionFactory;
 
 
 public class ClientServiceImpl implements ClientService {
     @Override
-    public void saveClient(String name) {
+    public void save(String name) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Client client = new Client();
@@ -24,14 +22,14 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void addCar(Car car, Long id) {
+    public void addCar(Long idCar, Long idClient) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
+        Car car = session.createQuery("from Car where id = :id", Car.class)
+                .setParameter("id", idCar).getSingleResult();
         Client client = session.createQuery("from Client where id = :id", Client.class)
-                .setParameter("id", id).getSingleResult();
+                .setParameter("id", idClient).getSingleResult();
         car.setClient(client);
-        client.getCars().add(car);
-        session.saveOrUpdate(car);
         transaction.commit();
         session.close();
     }
